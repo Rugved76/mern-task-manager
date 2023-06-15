@@ -5,11 +5,11 @@
 }
 
 body{
-  background-color: #81d184;
+  background-color: #43696b;
 }
 
 h2{
-  color: #43696b;
+  color: #43696b; 
 }
 .app{
   display: flex;
@@ -67,7 +67,6 @@ button:hover{
   background-color: #58aaad;
   width: 100%;
 }
-
 
 p{
   margin-right: 8em;
