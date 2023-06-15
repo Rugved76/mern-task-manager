@@ -15,5 +15,5 @@ const Task = ({ task, index, deleteTask, getSingleTask, setToComplete }) => {
     </div>
   );
 };
-
+//i
 export default Task;
