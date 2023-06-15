@@ -9,7 +9,7 @@ const TaskForm = ({
     <form className="task-form" onSubmit={isEditing ? updateTask : createTask}>
       <input
         type="text"
-        placeholder="Add a task"
+        placeholder="Add"   
         name="name"
         value={name}
         onChange={handleInputChange}

@@ -50,6 +50,7 @@ const TaskList = () => {
       setFormData({ ...formData, name: "" });
       getTasks();
     } catch (error) {
+      console.log('error',error); 
     }
   };
 
@@ -58,6 +59,7 @@ const TaskList = () => {
       await axios.delete(`${URL}/api/tasks/${id}`);
       getTasks();
     } catch (error) {
+      console.log('error',error); 
     }
   };
 
@@ -79,11 +81,11 @@ const TaskList = () => {
       setIsEditing(false);
       getTasks();
     } catch (error) {
+      console.log('error',error); 
     }
   };
 
   const setToComplete = async (task) => {
-    // console.log(task);
     const newFormData = {
       name: task.name,
       completed: true,
@@ -92,6 +94,7 @@ const TaskList = () => {
       await axios.put(`${URL}/api/tasks/${task._id}`, newFormData);
       getTasks();
     } catch (error) {
+      console.log('error',error); 
     }
   };
   useEffect(() => {
@@ -102,8 +105,7 @@ const TaskList = () => {
   }, [tasks]);
 
   return (
-    <div className="main">
-      <h2>Task Manager</h2>
+    <div className="main">    
       <TaskForm
         createTask={createTask}
         name={name}
@@ -111,42 +113,20 @@ const TaskList = () => {
         isEditing={isEditing}
         updateTask={updateTask}
       />
-      {tasks.length > 0 && (
-        <div className="--flex-between --pb">
-          <p>
-            <b>Total Tasks:</b> {tasks.length}
-          </p>
-          <p>
-            <b>Completed Tasks:</b> {completedTasks.length}
-          </p>
-        </div>
-      )}
 
       <hr />
-      {isLoading && (
-        <div className="--flex-center">
-          <img src={loadingImg} alt="Loading" />
-        </div>
-      )}
-      {!isLoading && tasks.length === 0 ? (
-        <p className="--py">No task added. Please add a task.</p>
-      ) : (
-        <>
-          {tasks.map((task, index) => {
-            return (
-              <Task
-                key={task._id}
-                task={task}
-                index={index}
-                deleteTask={deleteTask}
-                getSingleTask={getSingleTask}
-                updateTask={updateTask}
-                setToComplete={setToComplete}
-              />
-            );
-          })}
-        </>
-      )}
+      {tasks.map((task, index) => {
+        return (
+          <Task
+            key={task._id}
+            task={task}
+            index={index}
+            deleteTask={deleteTask}
+            getSingleTask={getSingleTask}
+            updateTask={updateTask}
+          />
+        );
+      })}
     </div>
   );
 };
