@@ -1,5 +1,5 @@
 import TaskList from "./components/TaskList";
-import './app.css'
+// import './app.css'
 
 export const URL = `http://localhost:8000`;
 

@@ -4,7 +4,7 @@ import Task from "./Task";
 import { URL } from "../App";
 import TaskForm from "./TaskForm";
 import loadingImg from "../assets/loader.gif";
-import '../app.css'
+// import '../app.css'
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
