@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
 import Task from "./Task";
 import { URL } from "../App";
 import TaskForm from "./TaskForm";
@@ -28,7 +27,6 @@ const TaskList = () => {
       setTasks(data);
       setIsLoading(false);
     } catch (error) {
-      toast(error.message);
       setIsLoading(false);
     }
   };
@@ -46,14 +44,12 @@ const TaskList = () => {
     e.preventDefault();
     // console.log(formData);
     if (name === "") {
-      return toast.error("Input field cannot be empty!");
     }
     try {
       await axios.post(`${URL}/api/tasks`, formData);
       setFormData({ ...formData, name: "" });
       getTasks();
     } catch (error) {
-      toast(error.message);
     }
   };
 
@@ -62,7 +58,6 @@ const TaskList = () => {
       await axios.delete(`${URL}/api/tasks/${id}`);
       getTasks();
     } catch (error) {
-      toast(error.message);
     }
   };
 
@@ -77,7 +72,6 @@ const TaskList = () => {
     e.preventDefault();
     // console.log("updated");
     if (name === "") {
-      return toast.error("Input field cannot be empty!");
     }
     try {
       await axios.put(`${URL}/api/tasks/${taskID}`, formData);
@@ -85,7 +79,6 @@ const TaskList = () => {
       setIsEditing(false);
       getTasks();
     } catch (error) {
-      toast(error.message);
     }
   };
 
@@ -99,7 +92,6 @@ const TaskList = () => {
       await axios.put(`${URL}/api/tasks/${task._id}`, newFormData);
       getTasks();
     } catch (error) {
-      toast(error.message);
     }
   };
   useEffect(() => {
