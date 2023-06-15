@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const taskRoutes = require("./routes/taskRoute");
 const logger = require("./middleware/logger");
+const connectDB = require('./config/connectDB')
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 
@@ -28,13 +30,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = process.env.PORT || 8000;
 // Connect DB & start server
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() =>
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}...`);
-    })
-  )
-  .catch((err) => console.log(err));
+connectDB();
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}...`);
+})

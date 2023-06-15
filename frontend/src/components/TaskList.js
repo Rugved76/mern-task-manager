@@ -5,6 +5,7 @@ import Task from "./Task";
 import { URL } from "../App";
 import TaskForm from "./TaskForm";
 import loadingImg from "../assets/loader.gif";
+import '../app.css'
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -109,7 +110,7 @@ const TaskList = () => {
   }, [tasks]);
 
   return (
-    <div>
+    <div className="main">
       <h2>Task Manager</h2>
       <TaskForm
         createTask={createTask}

@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-  try {
-    const connect = await mongoose.connect(process.env.MONGO_URI);
+  mongoose.connect("mongodb+srv://rugved:1234@clusterx.mc03un9.mongodb.net/?retryWrites=true&w=majority")
+    .then(() => {
 
-    console.log(`MongoDB Connected: ${connect.connection.host}`);
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
-};
+      console.log("Successfully connected to the MongoDB!")
+    })
+    .catch((e) => {
+      console.log('Connection failed!');
+    })
+}
 
 module.exports = connectDB;
