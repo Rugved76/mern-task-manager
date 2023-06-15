@@ -1,7 +1,7 @@
 import TaskList from "./components/TaskList";
 // import './app.css'
 
-export const URL = `http://localhost:8000`; 
+export const URL = `https://tb-bgsh.onrender.com`; 
 
 function App() {
   return (
